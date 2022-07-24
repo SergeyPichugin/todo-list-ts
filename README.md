@@ -1,4 +1,4 @@
-# Palan: Create react app typescript temlpate TO-DO list
+# Plan: Create react app typescript temlpate TO-DO list
 - Create app project
 - Edit structure project
 - Add all components project
