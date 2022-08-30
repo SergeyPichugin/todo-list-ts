@@ -1,11 +1,12 @@
 import styles from './todoitem.module.scss';
 
-const handleClickItem = () => {
-    alert('click');
-}
 
 function TodoItem( {...props} ){
-    const {title} = props
-    return <li onClick={handleClickItem} className={styles.item}>{title}</li>
+    const {title, completed} = props
+    return (
+        <li className={styles.item}>
+            <input type="checkbox" checked={completed}/> - {title}
+        </li>
+    )
 }
 export default TodoItem;

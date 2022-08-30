@@ -1,42 +1,22 @@
 import TodoItem from "../TodoItem/TodoItem";
 import styles from './todolist.module.scss'
-
-const ITEMS = [
-    {
-        id: 1,
-        title: 'Сварить суп',
-        completed: false,
-    },
-    {
-        id: 2,
-        title: 'Поглуять с кошкой',
-        completed: false,
-    },
-    { 
-        id: 3,
-        title: 'Постирать ковер',
-        completed: false,
-    },
-    { 
-        id: 4,
-        title: 'Написать письмо',
-        completed: false,
-    },
-    { 
-        id: 5,
-        title: 'Пожарить картошку',
-        completed: false,
-    }
-]
+import { useGetTodosQuery, useGetUsersQuery } from "../../redux";
 
 function TodoList( { ...props } ){
-    const {name} = props
-    return( 
+    const { data, isLoading, isError } = useGetTodosQuery('')
+    const {data: users} = useGetUsersQuery('')
+    const { name } = props
+
+    if (isLoading) return <h1>Loading...</h1>
+    if (isError) return <h1>Error</h1>
+    console.log(users)
+
+    return(
         <>
-        <h2 className={styles.title}>{name}</h2>
+            <h2 className={styles.title}>{name}</h2>
             <div className={styles.wrapper}>
                 <ul className={styles.list}>
-                    {ITEMS.map(item => <TodoItem title={item.title}/>)}                    
+                    {data?.map(item => <TodoItem title={item.title} completed={item.completed} key={item.id}/>)}
                 </ul>
             </div>
         </>
