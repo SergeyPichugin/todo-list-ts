@@ -8,3 +8,9 @@
 - Link user and todo ❌
 - Make it possible to update todo status ❌
 - Make a separate user page with his todo ❌
+
+Start project dev version `yarn dev` app `localhost:3000` and json-serve `localhost:3001`
+
+# endpoint json-serve
+- /todos/`nubmer`
+- /users/`number`
